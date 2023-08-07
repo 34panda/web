@@ -31,7 +31,7 @@ header
 header .logo
 {
     position: relative;
-    max-width: 110px;
+    max-width: 140px;
 
 }
 header ul
@@ -85,13 +85,56 @@ header ul li a
 }
 .content .textBox a
 {
+    transition: 0.5s;
     display: inline-block;
     margin-top: 20px;
     padding: 8px 20px;
-    background: linear-gradient(to bottom left, rgb(255, 221, 1)6%, rgb(66, 21, 129))40%;
+    background: linear-gradient(to bottom left, rgb(255, 221, 1)4%, rgb(66, 21, 129));
     color: lavender;
     border-radius: 40px;
     font-weight: 500;
     letter-spacing: 1px;
     text-decoration: none;
+    
+}
+.content .textBox a:hover{
+    transform: scale(1.08);
+    color: white;
+    background-size: 140%;
+}
+.content .imgBox
+{
+    width: 600px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 50px;
+    margin-top: 50px;
+}
+.content .imgBox img
+{
+    max-width: 400px;
+}
+.thumb
+{
+    position: absolute;
+    left: 40%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    display: flex;
+}
+.thumb li
+{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.thumb li:hover {
+    transform: translateY(-15px) scale(1.15);
+}
+
+.thumb li img
+{
+    max-width: 80px;
 }
