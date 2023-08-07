@@ -18,7 +18,7 @@
     </header>
     <div class="content">
       <div class="textBox">
-        <h2>I am Daniil Ivzhenko<br>But I'm also a <span>Programmer</span></h2>
+        <h2>I am Daniil Ivzhenko<br>But I'm also a <span class="auto-type"></span></h2>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. ratione saepe deleniti asperiores fuga aliquam ullam quo ab voluptate nihil quisquam? Cumque, quam dolorum?</p>
           <a href="#">Learn More</a>
         </div>
@@ -33,5 +33,14 @@
       <li><img src="assets/planets/white_moon.png"></li>
     </ul>  
   </section>
+  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+  <script>
+    var typed = new Typed(".auto-type", {
+      strings: ["Programmer", "Designer", "Engeneer", "Coder", "Student", "Human"],
+      typeSpeed: 80,
+      backSpeed: 60,
+      loop: true
+    })
+  </script>
 </body>
 </html>
