@@ -35,7 +35,11 @@ header .logo
 {
     position: relative;
     max-width: 140px;
-
+    transition: 0.5s;
+}
+header .logo:hover
+{
+    transform: scale(1.04);
 }
 header ul
 {
@@ -53,7 +57,16 @@ header ul li a
     font-weight: 400;   
     margin-left: 40px;
     text-decoration: none;
+    transition: all 0.12s ease-in;
 }
+header ul li a:hover
+{
+    transform: scale(1.07);
+    transition: 0.5s;
+    color: white;
+    text-shadow:0px 0px 50px lavender, 0px 0px 15px lavender;
+}
+
 .content
 {
     position: relative;
