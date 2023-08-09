@@ -84,7 +84,7 @@ class Blob {
     this._color = value;
   }
   get color() {
-    return this._color || '#900829';  // #######################################################
+    return this._color || '#808080';  // #######################################################
   }
   
   set canvas(value) {
@@ -112,7 +112,7 @@ class Blob {
     }
   }
   get radius() {
-    return this._radius || 150;
+    return this._radius || 600;//  ####################################################
   }
   
   set position(value) {
@@ -121,7 +121,7 @@ class Blob {
     }
   }
   get position() {
-    return this._position || { x: 0.5, y: 0.5 };
+    return this._position || { x: 1, y: 1.05 };
   }
   
   get divisional() {
