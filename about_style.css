@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+section
+{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+        align-items: center;
+        background-image: url('assets/space3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

@@ -14,8 +14,8 @@ section
     padding: 100px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background-image: url('assets/space3.jpg');
+        align-items: center;
+        background-image: url('assets/space3.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -160,4 +160,15 @@ header ul li a:hover
     -moz-user-select: none;
     -ms-user-select: none;
      user-select: none;
+}
+.circle
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #131313;
+    clip-path: circle(600px at right bottom);
+    
 }
