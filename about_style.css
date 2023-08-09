@@ -20,9 +20,8 @@ section
     background-position: center;
     background-repeat: no-repeat;
 }
-body, html { margin: 0; }
 
-canvas { 
+.blob { 
   position: fixed;
   touch-action: none;
 }
