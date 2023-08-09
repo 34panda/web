@@ -84,7 +84,7 @@ class Blob {
     this._color = value;
   }
   get color() {
-    return this._color || '#000000';
+    return this._color || '#900829';  // #######################################################
   }
   
   set canvas(value) {
@@ -244,7 +244,7 @@ init = function() {
       let vector = { x: e.clientX - pos.x, y: e.clientY - pos.y };
       angle = Math.atan2(vector.y, vector.x);
       hover = true;
-      // blob.color = '#77FF00';
+      // blob.color = '#213700';
     } else if(dist > blob.radius && hover === true){ 
       let vector = { x: e.clientX - pos.x, y: e.clientY - pos.y };
       angle = Math.atan2(vector.y, vector.x);

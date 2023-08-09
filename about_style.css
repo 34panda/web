@@ -15,8 +15,14 @@ section
     display: flex;
     justify-content: space-between;
         align-items: center;
-        background-image: url('assets/space3.jpg');
+        background-image: #131313;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+body, html { margin: 0; }
+
+canvas { 
+  position: fixed;
+  touch-action: none;
 }
