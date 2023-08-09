@@ -1,180 +1,173 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap');
-*
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 body {
-    margin: 0;
-    padding: 0;
-    background-image: url('assets/space3.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url("assets/space3.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: "Poppins", sans-serif;
 }
-section
-{
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    padding: 100px;
-    display: flex;
-    justify-content: space-between;
-        align-items: center;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-header
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-header .logo
-{
-    position: relative;
-    max-width: 140px;
-    transition: 0.5s;
+header .logo {
+  position: relative;
+  max-width: 140px;
+  transition: 0.5s;
 }
-header .logo:hover
-{
-    transform: scale(1.04);
+header .logo:hover {
+  transform: scale(1.04);
 }
-header ul
-{
-    position: relative;
-    display: flex;
+header ul {
+  position: relative;
+  display: flex;
 }
-header ul li
-{
-    list-style: none;
+header ul li {
+  list-style: none;
 }
-header ul li a
-{
-    display: inline-block;
-    color:lavender;
-    font-weight: 400;   
-    margin-left: 40px;
-    text-decoration: none;
-    transition: all 0.12s ease-in;
+header ul li a {
+  display: inline-block;
+  color: lavender;
+  font-weight: 400;
+  margin-left: 40px;
+  text-decoration: none;
+  transition: all 0.12s ease-in;
 }
-header ul li a:hover
-{
-    transform: scale(1.07);
-    transition: 0.5s;
-    color: white;
-    text-shadow:0px 0px 50px lavender, 0px 0px 15px lavender;
+header ul li a:hover {
+  transform: scale(1.07);
+  transition: 0.5s;
+  color: white;
+  text-shadow: 0px 0px 50px lavender, 0px 0px 15px lavender;
 }
 
-.content
-{
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.content {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.content .textBox
-{
-    position: relative;
-    max-width: 700px;
+.content .textBox {
+  position: relative;
+  max-width: 700px;
 }
-.content .textBox h2
-{
-    color: lavender;
-    font-size: 2.75em;
-    line-height: 1.4em;
-    font-weight: 400;
+.content .textBox h2 {
+  color: lavender;
+  font-size: 2.75em;
+  line-height: 1.4em;
+  font-weight: 400;
 }
-.content .textBox h2 span
-{
-    color:rgb(101, 37, 191);
-    font-size: 1em;
-    font-weight: 700;
-    margin: 5px;
+.content .textBox h2 span {
+  color: rgb(101, 37, 191);
+  font-size: 1em;
+  font-weight: 700;
+  margin: 5px;
 }
-.content .textBox p
-{
-    color: lavender;
-    margin-top: 10px;
+.content .textBox p {
+  color: lavender;
+  margin-top: 10px;
 }
-.content .textBox a
-{
-    transition: 0.5s;
-    display: inline-block;
-    margin-top: 20px;
-    padding: 8px 20px;
-    background: linear-gradient(to bottom left, rgb(255, 221, 1)4%, rgb(66, 21, 129));
-    color: lavender;
-    border-radius: 40px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-decoration: none;
-    
+.content .textBox a {
+  transition: 0.5s;
+  display: inline-block;
+  margin-top: 20px;
+  padding: 8px 20px;
+  background: linear-gradient(
+    to bottom left,
+    rgb(255, 221, 1) 4%,
+    rgb(66, 21, 129)
+  );
+  color: lavender;
+  border-radius: 40px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-decoration: none;
 }
-.content .textBox a:hover{
-    transform: scale(1.08);
-    color: white;
-    background-size: 140%;
+.content .textBox a:hover {
+  transform: scale(1.08);
+  color: white;
+  background-size: 140%;
 }
-.content .imgBox
-{
-    width: 600px;
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 50px;
-    margin-top: 50px;
+.content .imgBox {
+  width: 600px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50px;
+  margin-top: 50px;
 }
-.content .imgBox img
-{
-    max-width: 400px;
+.content .imgBox img {
+  max-width: 400px;
 }
-.thumb
-{
-    position: absolute;
-    left: 40%;
-    bottom: 20px;
-    transform: translateX(-50%);
-    display: flex;
+.thumb {
+  position: absolute;
+  left: 40%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  display: flex;
 }
-.thumb li
-{
-    list-style: none;
-    display: inline-block;
-    margin: 0 20px;
-    cursor: pointer;
-    transition: 0.5s;
+.thumb li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+  cursor: pointer;
+  transition: 0.5s;
 }
 .thumb li:hover {
-    transform: translateY(-15px) scale(1.15);
+  transform: translateY(-15px) scale(1.15);
 }
 
-.thumb li img
-{
-    max-width: 80px;
-    range: none;  
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-     user-select: none;
+.thumb li img {
+  max-width: 80px;
+  range: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-/*idk what canvas is */
-canvas{
-    position: absolute;
-    top: 0px;
-    z-index: -1;
-    display:inline-block;
-    overflow: hidden;
-    mask-composite:circle(700px at bottom right)
+
+  .bigIcon{
+    transform: translateY(8%)   ;
+    animation: floater 15s infinite;
+    transition: ease 0.5s;
   }
+  
+  @keyframes floater {
+    0%{transform:  translateY(8%);transition: ease 0.5s;}
+    50%{transform:  translateY(-8%) rotate(-5deg);transition: ease-in 0.5s;}
+  }
+/*idk what canvas is */
+canvas {
+  position: absolute;
+  bottom: 0px;
+  z-index: -1;
+  display: inline-block;
+  overflow: hidden;
+}
