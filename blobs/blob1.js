@@ -233,68 +233,76 @@ blob.image = 'assets/galaxy.jpg';  // replace 'path_to_your_image.jpg' with your
 init = function () {
   canvas = document.getElementById('blobCanvas');
 
-
   let resize = function () {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
   }
   window.addEventListener('resize', resize);
   resize();
 
   let oldMousePoint = { x: 0, y: 0 };
   let hover = false;
-  let mouseMove = function (e) {
 
-    let pos = blob.center;
-    let diff = { x: e.clientX - pos.x, y: e.clientY - pos.y };
-    let dist = Math.sqrt((diff.x * diff.x) + (diff.y * diff.y));
-    let angle = null;
-
-    blob.mousePos = { x: pos.x - e.clientX, y: pos.y - e.clientY };
-
-    if (dist < blob.radius && hover === false) {
-      let vector = { x: e.clientX - pos.x, y: e.clientY - pos.y };
-      angle = Math.atan2(vector.y, vector.x);
-      hover = true;
-      // blob.color = '#213700';
-    } else if (dist > blob.radius && hover === true) {
-      let vector = { x: e.clientX - pos.x, y: e.clientY - pos.y };
-      angle = Math.atan2(vector.y, vector.x);
-      hover = false;
-      blob.color = null;
-    }
-
-    if (typeof angle == 'number') {
-
-      let nearestPoint = null;
-      let distanceFromPoint = 100;
-
-      blob.points.forEach((point) => {
-        if (Math.abs(angle - point.azimuth) < distanceFromPoint) {
-          // console.log(point.azimuth, angle, distanceFromPoint);
-          nearestPoint = point;
-          distanceFromPoint = Math.abs(angle - point.azimuth);
-        }
-
-      });
-
-      if (nearestPoint) {
-        let strength = { x: oldMousePoint.x - e.clientX, y: oldMousePoint.y - e.clientY };
-        strength = Math.sqrt((strength.x * strength.x) + (strength.y * strength.y)) * 10;
-        if (strength > 100) strength = 230;
-        nearestPoint.acceleration = strength / 100 * (hover ? -1 : 1);
+  function getCoords(e) {
+      // if touch event, retrieve position from the touches array
+      if (e.touches) {
+          return { x: e.touches[0].clientX, y: e.touches[0].clientY };
       }
-    }
-
-    oldMousePoint.x = e.clientX;
-    oldMousePoint.y = e.clientY;
+      // else, get position from mouse event
+      return { x: e.clientX, y: e.clientY };
   }
-  // window.addEventListener('mousemove', mouseMove);
-  window.addEventListener('pointermove', mouseMove);
+
+  function moveHandler(e) {
+      let coords = getCoords(e);
+
+      let pos = blob.center;
+      let diff = { x: coords.x - pos.x, y: coords.y - pos.y };
+      let dist = Math.sqrt((diff.x * diff.x) + (diff.y * diff.y));
+      let angle = null;
+
+      blob.mousePos = { x: pos.x - coords.x, y: pos.y - coords.y };
+
+      if (dist < blob.radius && hover === false) {
+          let vector = { x: coords.x - pos.x, y: coords.y - pos.y };
+          angle = Math.atan2(vector.y, vector.x);
+          hover = true;
+      } else if (dist > blob.radius && hover === true) {
+          let vector = { x: coords.x - pos.x, y: coords.y - pos.y };
+          angle = Math.atan2(vector.y, vector.x);
+          hover = false;
+          blob.color = null;
+      }
+
+      if (typeof angle == 'number') {
+          let nearestPoint = null;
+          let distanceFromPoint = 100;
+
+          blob.points.forEach((point) => {
+              if (Math.abs(angle - point.azimuth) < distanceFromPoint) {
+                  nearestPoint = point;
+                  distanceFromPoint = Math.abs(angle - point.azimuth);
+              }
+          });
+
+          if (nearestPoint) {
+              let strength = { x: oldMousePoint.x - coords.x, y: oldMousePoint.y - coords.y };
+              strength = Math.sqrt((strength.x * strength.x) + (strength.y * strength.y)) * 10;
+              if (strength > 100) strength = 230;
+              nearestPoint.acceleration = strength / 100 * (hover ? -1 : 1);
+          }
+      }
+
+      oldMousePoint.x = coords.x;
+      oldMousePoint.y = coords.y;
+  }
+
+  window.addEventListener('pointermove', moveHandler);
+  window.addEventListener('touchmove', moveHandler);
 
   blob.canvas = canvas;
   blob.init();
   blob.render();
 }
+
 
 init();
