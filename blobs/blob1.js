@@ -20,57 +20,47 @@ class Blob {
     let ctx = this.ctx;
     let position = this.position;
     let pointsArray = this.points;
-    let radius = this.radius;
     let points = this.numPoints;
-    let divisional = this.divisional;
-    let center = this.center;
-
+  
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+  
     pointsArray[0].solveWith(pointsArray[points - 1], pointsArray[1]);
-
     let p0 = pointsArray[points - 1].position;
     let p1 = pointsArray[0].position;
     let _p2 = p1;
-
+  
     ctx.beginPath();
-    ctx.moveTo(center.x, center.y);
     ctx.moveTo((p0.x + p1.x) / 2, (p0.y + p1.y) / 2);
-
+  
     for (let i = 1; i < points; i++) {
-
       pointsArray[i].solveWith(pointsArray[i - 1], pointsArray[i + 1] || pointsArray[0]);
-
       let p2 = pointsArray[i].position;
       var xc = (p1.x + p2.x) / 2;
       var yc = (p1.y + p2.y) / 2;
       ctx.quadraticCurveTo(p1.x, p1.y, xc, yc);
-      // ctx.lineTo(p2.x, p2.y);
-
-      ctx.fillStyle = '#000000';
-      // ctx.fillRect(p1.x-2.5, p1.y-2.5, 5, 5);
-
       p1 = p2;
     }
-
+  
     var xc = (p1.x + _p2.x) / 2;
     var yc = (p1.y + _p2.y) / 2;
     ctx.quadraticCurveTo(p1.x, p1.y, xc, yc);
-    // ctx.lineTo(_p2.x, _p2.y);
-
-    // ctx.closePath();
-    ctx.fillStyle = this.blobColor;    // #################### SET COLOR ########################
-    ctx.fill();
+  
+    // If the image is ready, clip the region and draw the image within the blob
+    if (this._imageReady) {
+      ctx.save();
+      ctx.clip();
+      ctx.drawImage(this._image, 0, 0, canvas.width, canvas.height);
+      ctx.restore();
+    } else {
+      // Fallback to filling the blob if there's no image
+      ctx.fillStyle = this.blobColor || this.color; 
+      ctx.fill();
+    }
+  
     ctx.strokeStyle = '#000000';
+    // Uncomment if you want to draw the blob outline.
     // ctx.stroke();
-
-    /*
-        ctx.fillStyle = '#000000';
-        if(this.mousePos) {
-          let angle = Math.atan2(this.mousePos.y, this.mousePos.x) + Math.PI;
-          ctx.fillRect(center.x + Math.cos(angle) * this.radius, center.y + Math.sin(angle) * this.radius, 5, 5);
-        }
-    */
+  
     requestAnimationFrame(this.render.bind(this));
   }
 
@@ -82,10 +72,11 @@ class Blob {
 
   set canvas(value) {
     if (value instanceof HTMLElement && value.tagName.toLowerCase() === 'canvas') {
-      this._canvas = canvas;
+      this._canvas = value;
       this.ctx = this._canvas.getContext('2d');
     }
   }
+  
   get canvas() {
     return this._canvas;
   }
@@ -140,6 +131,24 @@ class Blob {
   get color() {
     return this._color || '#a7e629'; // default color
   }
+
+  set image(value) {
+    if (typeof value == 'string') { 
+      this._image = new Image();
+      this._image.src = value;
+      this._image.onload = () => { 
+        this._imageReady = true; 
+        console.log("Image is ready"); 
+      };
+      
+      this._image.onerror = () => { console.error("Image failed to load:", value); };
+    }
+  }
+  
+  get image() {
+    return this._image;
+  }
+  
 
 }
 
@@ -218,6 +227,8 @@ class Point {
 }
 
 blob = new Blob;
+blob.image = 'assets/galaxy.jpg';  // replace 'path_to_your_image.jpg' with your image URL
+
 
 init = function () {
   canvas = document.getElementById('blobCanvas');
@@ -270,7 +281,7 @@ init = function () {
       if (nearestPoint) {
         let strength = { x: oldMousePoint.x - e.clientX, y: oldMousePoint.y - e.clientY };
         strength = Math.sqrt((strength.x * strength.x) + (strength.y * strength.y)) * 10;
-        if (strength > 100) strength = 185;
+        if (strength > 100) strength = 230;
         nearestPoint.acceleration = strength / 100 * (hover ? -1 : 1);
       }
     }
