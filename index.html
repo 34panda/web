@@ -14,7 +14,7 @@
         <li><a href="./">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="#">Menu</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </header>
     <div class="content">
@@ -28,13 +28,18 @@
       </div>
     </div>
     <ul class="thumb">
-      <li><img src="assets/planets/home_planet.png"></li>
-      <li><img src="assets/planets/python_planet.png"></li>
-      <li><img src="assets/planets/purple_planet.png"></li>
-      <li><img src="assets/planets/white_moon.png"></li>
-    </ul>  
+      <li><img src="assets/planets/white_moon.png" onclick="imgSlider('assets/astronaut.png')"></li>
+      <li><img src="assets/planets/home_planet.png" onclick="imgSlider('assets/planets/home_planet.png')"></li>
+      <li><img src="assets/planets/python_planet.png" onclick="imgSlider('assets/planets/python_planet.png')"></li>
+      <li><img src="assets/planets/purple_planet.png" onclick="imgSlider('assets/planets/purple_planet.png')"></li>
+    </ul>
   </section>
-  
+  <script type="text/javascript">
+    function imgSlider(anything){
+  document.querySelector('.bigIcon').src = anything;
+}
+
+  </script>
   <script src="blobs/blob1.js"></script>
   <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
   <script>

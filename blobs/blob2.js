@@ -59,7 +59,7 @@ class Blob {
     // ctx.lineTo(_p2.x, _p2.y);
 
     // ctx.closePath();
-    ctx.fillStyle = this.color;
+    ctx.fillStyle = "#FFE74C"; // #################### SET COLOR ########################
     ctx.fill();
     ctx.strokeStyle = '#000000';
     // ctx.stroke();
@@ -78,13 +78,6 @@ class Blob {
     if(item instanceof Point) {
       this.points.push(item);
     }
-  }
-  
-  set color(value) {
-    this._color = value;
-  }
-  get color() {
-    return this._color || '#808080';  // #######################################################
   }
   
   set canvas(value) {
@@ -112,7 +105,7 @@ class Blob {
     }
   }
   get radius() {
-    return this._radius || 600;//  ####################################################
+    return this._radius || 710;//  ####################################################
   }
   
   set position(value) {
@@ -121,7 +114,7 @@ class Blob {
     }
   }
   get position() {
-    return this._position || { x: 1, y: 1.05 };
+    return this._position || { x: 1, y: 1.1 };
   }
   
   get divisional() {
@@ -269,7 +262,7 @@ init = function() {
       if(nearestPoint) {
         let strength = { x: oldMousePoint.x - e.clientX, y: oldMousePoint.y - e.clientY };
         strength = Math.sqrt((strength.x * strength.x) + (strength.y * strength.y)) * 10;
-        if(strength > 100) strength = 100;
+        if(strength > 100) strength = 185;
         nearestPoint.acceleration = strength / 100 * (hover ? -1 : 1);
       }
     }
@@ -285,4 +278,4 @@ init = function() {
   blob.render();
 }
 
-init();
+init(); 

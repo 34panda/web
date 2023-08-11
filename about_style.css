@@ -33,21 +33,19 @@ section
     grid-template-rows: 1fr;
     grid-template-areas: "overlap";
 }
-.blob1 
+
+.blob
 { 
+    position: fixed;
     grid-area: overlap;
     align-self: center;
     justify-self: center;
 }
-.blob2 
-{  
-    grid-area: overlap;
-    align-self: center;
-    justify-self: center;
-}
-.blob3
-{  
-    grid-area: overlap;
-    align-self: center;
-    justify-self: center;
-}
+ 
+canvas {
+    position: fixed;
+    z-index: -1;
+    top: 0px;
+    width: 100%;
+    touch-action: none;
+  }

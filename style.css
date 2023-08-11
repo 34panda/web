@@ -156,7 +156,7 @@ header ul li a:hover {
   .bigIcon{
     transform: translateY(8%)   ;
     animation: floater 15s infinite;
-    transition: ease 0.5s;
+    transition: cubic-bezier(1,1.64,0,-0.7) 0.5s;
   }
   
   @keyframes floater {

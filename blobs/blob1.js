@@ -59,7 +59,7 @@ class Blob {
     // ctx.lineTo(_p2.x, _p2.y);
 
     // ctx.closePath();
-    ctx.fillStyle = '#92f18f'; // #################### SET COLOR ########################
+    ctx.fillStyle = "#a7e629"; // #################### SET COLOR ########################
     ctx.fill();
     ctx.strokeStyle = '#000000';
     // ctx.stroke();
