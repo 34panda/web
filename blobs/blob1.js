@@ -129,7 +129,7 @@ class Blob {
     }
   }
   get color() {
-    return this._color || '#a7e629'; // default color
+    return this._color || '#000000'; // default color
   }
 
   set image(value) {

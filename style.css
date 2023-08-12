@@ -136,7 +136,7 @@ header ul li a:hover {
   display: inline-block;
   margin: 0 20px;
   cursor: pointer;
-  transition: 0.5s;  
+  transition: 0.5s;
 }
 .thumb li:hover {
   transform: translateY(-15px) scale(1.15);
@@ -153,16 +153,22 @@ header ul li a:hover {
   user-select: none;
 }
 
-  .bigIcon{
-    transform: translateY(8%)   ;
-    animation: floater 15s infinite;
-    transition: cubic-bezier(1,1.64,0,-0.7) 0.5s;
+.bigIcon {
+  transform: translateY(8%);
+  animation: floater 15s infinite;
+  transition: cubic-bezier(1, 1.64, 0, -0.7) 0.5s;
+}
+
+@keyframes floater {
+  0% {
+    transform: translateY(8%);
+    transition: ease 0.5s;
   }
-  
-  @keyframes floater {
-    0%{transform:  translateY(8%);transition: ease 0.5s;}
-    50%{transform:  translateY(-8%) rotate(-5deg);transition: ease-in 0.5s;}
+  50% {
+    transform: translateY(-8%) rotate(-5deg);
+    transition: ease-in 0.5s;
   }
+}
 /*idk what canvas is */
 canvas {
   position: absolute;
@@ -170,4 +176,96 @@ canvas {
   z-index: -1;
   display: inline-block;
   overflow: hidden;
+}
+
+/* ################################################################*/
+/* ########### TABLET ######### */
+@media only screen and (max-width: 768px) {
+  body {
+    background-size: cover;
+    background-position: center;
+  }
+  section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  header .logo {
+    position: relative;
+    max-width: 140px;
+    transition: 0.5s;
+  }
+  header .logo:hover {
+    transform: scale(1.04);
+  }
+  header ul {
+    position: relative;
+    display: flex;
+  }
+  header ul li {
+    list-style: none;
+  }
+  header ul li a {
+    display: inline-block;
+    color: lavender;
+    font-size: 6.3vw;
+    font-weight: 400;
+    margin-left: 40px;
+    text-decoration: none;
+    transition: all 0.12s ease-in;
+  }
+  .bigIcon {
+    scale: 1.5;
+  }
+
+  /*##########################*/
+
+  .thumb {
+    position: unset;
+    left: 50%;
+    bottom: 20px;
+  }
+  .thumb li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    transition: 0.5s;
+  }
+  
+  .thumb li img {
+    max-width: 80px;
+    range: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+}
+
+/* ########## MOBILE ########## */
+@media only screen and (max-width: 480px) {
+  .bigIcon {
+    scale: 1.5;
+  }
 }
