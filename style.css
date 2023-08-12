@@ -157,6 +157,28 @@ header ul li a:hover {
   transform: translateY(8%);
   animation: floater 15s infinite;
   transition: cubic-bezier(1, 1.64, 0, -0.7) 0.5s;
+
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 1s;
+}
+
+/* Add this for the 360° flip effect on click */
+.bigIcon:active, .bigIcon:focus {
+  animation: spin 1s infinite;
+}
+
+
+@keyframes spin {
+  from {
+    transform: translateY(8%) rotate(0deg);
+  }
+  to {
+    transform: translateY(8%) rotate(360deg);
+  }
 }
 
 @keyframes floater {
