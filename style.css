@@ -75,15 +75,20 @@ header ul li a:hover {
 }
 .content .textBox {
   position: relative;
-  width: 300px; /* fixed width */
+  width: 1200px; /* fixed width */
   height: 400px; /* example fixed height, adjust as needed */
-  overflow: auto;
+  overflow: visible;
+  margin-top: 13vw;
 }
 .content .textBox h2 {
   color: lavender;
   font-size: 2.75em;
   line-height: 1.4em;
   font-weight: 400;
+  flex: none;
+  margin-right: -100px;
+
+  white-space: nowrap;
 }
 .content .textBox h2 span {
   color: rgb(101, 37, 191);
@@ -94,6 +99,7 @@ header ul li a:hover {
 .content .textBox p {
   color: lavender;
   margin-top: 10px;
+  margin-right: 10px;
 }
 .content .textBox a {
   transition: 0.5s;
@@ -234,7 +240,7 @@ canvas {
 
   .content .textBox {
     max-width: 100%; /* Full width for better readability */
-    text-align: center; /* Center align text */
+    text-align: left; /* Center align text */
   }
 
   .content .imgBox {
@@ -308,12 +314,22 @@ canvas {
     font-size: 4.5vw; /* Adjust font size */
   }
 
+  .content {
+    display: flex; /* Make it a flex container */
+    flex-direction: row; /* Elements in a row */
+    justify-content: space-between; /* Distributes space between the children elements */
+  }
+  .content .textBox,
+  .content .imgBox {
+    flex: 1; /* Each takes equal width */
+  }
   .content .textBox h2 {
-    font-size: 24px; /* Adjust font size for headers */
+    font-size: 20px; /* Adjust font size for headers */
   }
 
   .content .textBox p {
-    font-size: 18px; /* Adjust font size for paragraph */
+    font-size: 14px; /* Adjust font size for paragraph */
+    flex: 1;
   }
 
   .content .textBox a {
@@ -340,5 +356,6 @@ canvas {
   .content .imgBox img {
     width: 100%;
     max-width: 100%; /* Image to fit container */
+    z-index: -1;
   }
 }
