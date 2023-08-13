@@ -45,17 +45,37 @@ class Blob {
     var yc = (p1.y + _p2.y) / 2;
     ctx.quadraticCurveTo(p1.x, p1.y, xc, yc);
   
-    // If the image is ready, clip the region and draw the image within the blob
-    if (this._imageReady) {
-      ctx.save();
-      ctx.clip();
-      ctx.drawImage(this._image, 0, 0, canvas.width, canvas.height);
-      ctx.restore();
-    } else {
-      // Fallback to filling the blob if there's no image
-      ctx.fillStyle = this.blobColor || this.color; 
-      ctx.fill();
+     // If the image is ready, clip the region and draw the image within the blob
+  if (this._imageReady) {
+    ctx.save();
+    ctx.clip();
+
+    // Calculate the dimensions for the image while maintaining aspect ratio
+    let imgAspectRatio = this._image.width / this._image.height;
+    let blobDiameter = this.radius * 2; // Diameter of the blob
+
+    let drawWidth, drawHeight;
+
+    if (imgAspectRatio > 1) { // Landscape image
+      drawWidth = blobDiameter;
+      drawHeight = drawWidth / imgAspectRatio;
+    } else { // Portrait or square image
+      drawHeight = blobDiameter;
+      drawWidth = drawHeight * imgAspectRatio;
     }
+
+    // Calculate coordinates to draw the image centered in canvas
+    let x = (canvas.width - drawWidth) / 2;
+    let y = (canvas.height - drawHeight) / 2;
+
+    ctx.drawImage(this._image, x, y, drawWidth, drawHeight);
+    ctx.restore();
+  } else {
+    // Fallback to filling the blob if there's no image
+    ctx.fillStyle = this.blobColor || this.color; 
+    ctx.fill();
+  }
+
   
     ctx.strokeStyle = '#000000';
     // Uncomment if you want to draw the blob outline.

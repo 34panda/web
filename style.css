@@ -75,7 +75,9 @@ header ul li a:hover {
 }
 .content .textBox {
   position: relative;
-  max-width: 700px;
+  width: 300px; /* fixed width */
+  height: 400px; /* example fixed height, adjust as needed */
+  overflow: auto;
 }
 .content .textBox h2 {
   color: lavender;
@@ -167,10 +169,10 @@ header ul li a:hover {
 }
 
 /* Add this for the 360° flip effect on click */
-.bigIcon:active, .bigIcon:focus {
+.bigIcon:active,
+.bigIcon:focus {
   animation: spin 1s infinite;
 }
-
 
 @keyframes spin {
   from {
@@ -191,7 +193,12 @@ header ul li a:hover {
     transition: ease-in 0.5s;
   }
 }
-/*idk what canvas is */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* To ensure no scrollbars appear */
+}
 canvas {
   position: absolute;
   bottom: 0px;
@@ -201,93 +208,137 @@ canvas {
 }
 
 /* ################################################################*/
+/* Your existing CSS stays the same up until the media queries */
+
 /* ########### TABLET ######### */
 @media only screen and (max-width: 768px) {
-  body {
-    background-size: cover;
-    background-position: center;
-  }
+  body,
   section {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    padding: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    padding: 20px; /* Reduced padding */
   }
+
   header {
+    padding: 20px; /* Reduced padding */
+  }
+
+  header .logo {
+    max-width: 100px; /* Reduced logo size */
+  }
+
+  header ul li a {
+    font-size: 5vw; /* Font scaling with viewport width */
+    margin-left: 20px; /* Reduced margin */
+  }
+
+  .content .textBox {
+    max-width: 100%; /* Full width for better readability */
+    text-align: center; /* Center align text */
+  }
+
+  .content .imgBox {
+    width: 100%; /* Full width for image */
+    padding-right: 0;
+    margin-top: 20px; /* Margin adjustment */
+  }
+
+  .content .imgBox img {
+    max-width: 100%; /* Image to fit container */
+    width: 80%;
+  }
+
+  .thumb {
+    position: fixed;
+    left: 50%;
+    width: 70vw;
+    display: flex; /* Add flex display */
+    justify-content: center;
+    transform: translateX(-50%); /* This centers the .thumb element */
+  }
+
+  .thumb li {
+    list-style: none;
+    flex: 1; /* This will make each item take equal space */
+    margin: 0 3vw;
+    cursor: auto;
+    transition: 0.5s;
+    /* size: 30px; this is not a valid CSS property. Use width, height, or font-size as per the requirement */
+  }
+  .thumb li img {
+    width: 15vw;
+  }
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevents scrolling */
+  }
+  .canvasContainer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: -1;
+    overflow: hidden;
+    translate: 0 40vw;
+  }
+  canvas {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    height: 100%;
   }
-  
-  header .logo {
-    position: relative;
-    max-width: 140px;
-    transition: 0.5s;
-  }
-  header .logo:hover {
-    transform: scale(1.04);
-  }
-  header ul {
-    position: relative;
-    display: flex;
-  }
-  header ul li {
-    list-style: none;
-  }
-  header ul li a {
-    display: inline-block;
-    color: lavender;
-    font-size: 6.3vw;
-    font-weight: 400;
-    margin-left: 40px;
-    text-decoration: none;
-    transition: all 0.12s ease-in;
-  }
-  .bigIcon {
-    scale: 1.5;
-  }
-
-  /*##########################*/
-
-  .thumb {
-    position: unset;
-    left: 50%;
-    bottom: 20px;
-  }
-  .thumb li {
-    list-style: none;
-    display: inline-block;
-    margin: 0 20px;
-    transition: 0.5s;
-  }
-  
-  .thumb li img {
-    max-width: 80px;
-    range: none;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
 }
 
 /* ########## MOBILE ########## */
 @media only screen and (max-width: 480px) {
-  .bigIcon {
-    scale: 1.5;
+  header ul {
+    flex-direction: column; /* Stack menu items vertically */
+    align-items: center;
+  }
+
+  header ul li a {
+    margin-left: 0;
+    margin-bottom: 10px; /* Spacing between menu items */
+    font-size: 4.5vw; /* Adjust font size */
+  }
+
+  .content .textBox h2 {
+    font-size: 24px; /* Adjust font size for headers */
+  }
+
+  .content .textBox p {
+    font-size: 18px; /* Adjust font size for paragraph */
+  }
+
+  .content .textBox a {
+    padding: 5px 15px; /* Adjust button size */
+    font-size: 16px; /* Adjust font size for button */
+  }
+  .canvasContainer {
+    position: flex;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: -1;
+    overflow: hidden;
+    translate: 0 100vw;
+  }
+  .content .textBox a {
+    visibility: hidden;
+    transition: 0.5s;
+    display: inline-block;
+    margin-top: 0;
+    padding: 0 0;
+  }
+  .content .imgBox img {
+    width: 100%;
+    max-width: 100%; /* Image to fit container */
   }
 }
